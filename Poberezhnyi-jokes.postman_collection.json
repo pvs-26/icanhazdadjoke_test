@@ -1,0 +1,332 @@
+{
+	"info": {
+		"_postman_id": "89d75982-8719-4c09-bcf0-93ea98735440",
+		"name": "Poberezhnyi-jokes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41336011"
+	},
+	"item": [
+		{
+			"name": "Fetch a random dad joke",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"if(pm.response.code !== 200) {\r",
+							"    console.log('FAILED. The response body is ' + pm.response.text);\r",
+							"}   else {\r",
+							"        pm.environment.set(\"joke_id\", jsonData.id);\r",
+							"        pm.environment.set(\"joke_text\", jsonData.joke);\r",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}",
+					"host": [
+						"{{base_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch a random dad joke as text",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "text/plain",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}",
+					"host": [
+						"{{base_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch a random dad joke as a Slack message",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// валідація джейсон схеми на перевірки правильності структури\r",
+							"var schema = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"attachments\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": [\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"fallback\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"footer\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"text\": {\r",
+							"              \"type\": \"string\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"fallback\",\r",
+							"            \"footer\",\r",
+							"            \"text\"\r",
+							"          ]\r",
+							"        }\r",
+							"      ]\r",
+							"    },\r",
+							"    \"response_type\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"username\": {\r",
+							"      \"type\": \"string\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"attachments\",\r",
+							"    \"response_type\",\r",
+							"    \"username\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test('Schema is valid', function () {\r",
+							"    pm.expect(tv4.validate(jsonData, schema)).to.be.true;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "text/plain",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/slack",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"slack"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch a specific dad joke",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"  pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"// Updated test to compare the joke text correctly\r",
+							"pm.test(\"Compare the joke text\", function() {\r",
+							"  pm.expect(jsonData.joke).to.eql(pm.environment.get(\"joke_text\"));\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/j/{{joke_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"j",
+						"{{joke_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch a dad joke as an image",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "text/plain",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/j/{{joke_id}}.png",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"j",
+						"{{joke_id}}.png"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search for dad jokes",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let term = _.sample([\"developer\", \"dinosaur\", \"cats\", \"bar\"]);\r",
+							"\r",
+							"pm.environment.set(\"term\",term);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    pm.expect(jsonData.search_term).to.eql(pm.environment.get(\"term\"));\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/search?page&limit&term={{term}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": null
+						},
+						{
+							"key": "limit",
+							"value": null
+						},
+						{
+							"key": "term",
+							"value": "{{term}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {\r",
+					"    pm.response.to.have.status(200);\r",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"value": "",
+			"type": "string"
+		}
+	]
+}
