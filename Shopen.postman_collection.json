@@ -1,0 +1,2078 @@
+{
+	"info": {
+		"_postman_id": "2aaa3c49-aa0a-42bd-b784-adb4d2745951",
+		"name": "Shopen",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41336011"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"item": [
+				{
+					"name": "Register | empty values",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422, Bad Request\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string: json_invalid\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"json_invalid\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \n  \"password\": \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | null values",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422, Bad Request\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string: Input should be a valid string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should be a valid string\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": null,\n  \"password\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | space values",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422, Bad Request\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string: Input should not be an empty string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should not be an empty string\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \" \",\n  \"password\": \" \"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | special charachter values",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Функція для генерації випадкового імені\r",
+									"function generateRandomUsername(length = 10) {\r",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';\r",
+									"    let randomName = '';\r",
+									"    \r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        const randomIndex = Math.floor(Math.random() * characters.length);\r",
+									"        randomName += characters[randomIndex];\r",
+									"    }\r",
+									"    \r",
+									"    return randomName;\r",
+									"}\r",
+									"\r",
+									"// Генерація випадкового імені\r",
+									"let randomUsername = generateRandomUsername(); // 10 символів за замовчуванням\r",
+									"let specialChar = \"!#$%&'()*+,-./:;<=>?@[]^_`{|}~\";\r",
+									"let uniqName = randomUsername.concat(\"\", specialChar);\r",
+									"\r",
+									"pm.collectionVariables.set('uniqName', uniqName);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"{{uniqName}}\",\n  \"password\": \"{{uniqName}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | boolean values",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422, Bad Request\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string: Input should be a valid string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should be a valid string\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": true,\n  \"password\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | object values",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422, Bad Request\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string: Input should be a valid string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should be a valid string\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": {},\n  \"password\": {}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | array values",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422, Bad Request\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string: Input should be a valid string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should be a valid string\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": [],\n  \"password\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | int values",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422, Bad Request\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string: Input should be a valid string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should be a valid string\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": 123,\n  \"password\": 123\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | decimals values",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422, Bad Request\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string: Input should be a valid string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should be a valid string\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": 1.1,\n  \"password\": 1.2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | empty strings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422, Bad Request\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string: Input should be a valid string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should be a valid string\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"\",\n  \"password\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | empty body",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422, Bad Request\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string: Field required\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Field required\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | empty array",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422, Bad Request\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string: Field required\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Field required\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | password field required",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422, Bad Request\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string: Field required\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Field required\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"asdasdadasd21223\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | password field empty",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422, Bad Request\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string: Expecting value\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Expecting value\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"sadasdsadsadasdsad123123adasdsasdasdasdasdasdasss21\",\n  \"password\": \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | username field required",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422, Bad Request\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string: Field required\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Field required\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"password\": \"sadasdsadsadasdsad123123adasdsasdasdasdasdasdasss21\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | username field required Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422, Bad Request\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string: Expecting value\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Expecting value\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": ,\n  \"password\": \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | valid data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseJson = pm.response.json();\r",
+									"let token = responseJson.token;\r",
+									"\r",
+									"pm.collectionVariables.set(\"token\", token);\r",
+									"\r",
+									"let requestBody = pm.request.body.raw;\r",
+									"let parsedRequestBody = JSON.parse(requestBody);\r",
+									"\r",
+									"let username = parsedRequestBody.username;\r",
+									"let password = parsedRequestBody.password;\r",
+									"\r",
+									"pm.collectionVariables.set('username', username);\r",
+									"pm.collectionVariables.set('password', password);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Token is present in response\", function () {\r",
+									"    pm.expect(responseJson.token).to.eql(token);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"{{$randomUserName}}\",\n  \"password\": \"{{$randomPassword}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | username has 50 characters",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function generateRandomUsername(length = 50) {\r",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';\r",
+									"    let randomName = '';\r",
+									"    \r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        const randomIndex = Math.floor(Math.random() * characters.length);\r",
+									"        randomName += characters[randomIndex];\r",
+									"    }\r",
+									"    \r",
+									"    return randomName;\r",
+									"}\r",
+									"\r",
+									"// Генерація випадкового імені\r",
+									"let longUsername = generateRandomUsername(); // 10 символів за замовчуванням\r",
+									"\r",
+									"\r",
+									"pm.collectionVariables.set('longUsername', longUsername);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"{{longUsername}}\",\n  \"password\": \"{{$randomPassword}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | username has 51 characters",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"pm.test(\"Internal Server Error\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Internal Server Error\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function generateRandomUsername(length = 51) {\r",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';\r",
+									"    let randomName = '';\r",
+									"    \r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        const randomIndex = Math.floor(Math.random() * characters.length);\r",
+									"        randomName += characters[randomIndex];\r",
+									"    }\r",
+									"    \r",
+									"    return randomName;\r",
+									"}\r",
+									"\r",
+									"// Генерація випадкового імені\r",
+									"let longUsername = generateRandomUsername(); // 10 символів за замовчуванням\r",
+									"\r",
+									"\r",
+									"pm.collectionVariables.set('longUsername', longUsername);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"{{longUsername}}\",\n  \"password\": \"{{$randomPassword}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | register with  previously used data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400, Bad Request\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"User already exists\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"User already exists\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"{{username}}\",\n  \"password\": \"{{password}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | GET method",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 405\", function () {\r",
+									"    pm.response.to.have.status(405);\r",
+									"});\r",
+									"pm.test(\"Method Not Allowed\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Method Not Allowed\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"{{$randomUserName}}\",\n  \"password\": \"{{$randomPassword}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | PUT method",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 405\", function () {\r",
+									"    pm.response.to.have.status(405);\r",
+									"});\r",
+									"pm.test(\"Method Not Allowed\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Method Not Allowed\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"{{$randomUserName}}\",\n  \"password\": \"{{$randomPassword}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | PATCH method",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 405\", function () {\r",
+									"    pm.response.to.have.status(405);\r",
+									"});\r",
+									"pm.test(\"Method Not Allowed\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Method Not Allowed\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"{{$randomUserName}}\",\n  \"password\": \"{{$randomPassword}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | DELETE method",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 405\", function () {\r",
+									"    pm.response.to.have.status(405);\r",
+									"});\r",
+									"pm.test(\"Method Not Allowed\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Method Not Allowed\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"{{$randomUserName}}\",\n  \"password\": \"{{$randomPassword}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | HEAD method",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 405\", function () {\r",
+									"    pm.response.to.have.status(405);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "HEAD",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"{{$randomUserName}}\",\n  \"password\": \"{{$randomPassword}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				},
+				{
+					"name": "Register | OPTIONS method",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 405\", function () {\r",
+									"    pm.response.to.have.status(405);\r",
+									"});\r",
+									"pm.test(\"Method Not Allowed\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Method Not Allowed\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "OPTIONS",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://shopen.qamania.org"
+							},
+							{
+								"key": "Referer",
+								"value": "http://shopen.qamania.org/api/v1/docs"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"{{$randomUserName}}\",\n  \"password\": \"{{$randomPassword}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl 'http://shopen.qamania.org/api/v1/users/register' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -H 'Origin: http://shopen.qamania.org' \\\r\n  -H 'Referer: http://shopen.qamania.org/api/v1/docs' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' \\\r\n  -H 'accept: application/json' \\\r\n  --data-raw $'{\\n  \"username\": \"string\",\\n  \"password\": \"string\"\\n}' \\\r\n  --insecure"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "username",
+			"value": ""
+		},
+		{
+			"key": "password",
+			"value": ""
+		},
+		{
+			"key": "uniqName",
+			"value": ""
+		},
+		{
+			"key": "longUsername",
+			"value": ""
+		},
+		{
+			"key": "url",
+			"value": "http://shopen.qamania.org/api/v1/users",
+			"type": "string"
+		}
+	]
+}
