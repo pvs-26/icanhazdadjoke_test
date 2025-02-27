@@ -2781,6 +2781,1160 @@
 			]
 		},
 		{
+			"name": "User operations",
+			"item": [
+				{
+					"name": "List all users in system | not authenthicated",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403: Forbidden\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Not authenticated\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Not authenticated\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"list"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/list' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "List all users in system | non admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403: Forbiddeb\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"pm.test(\"Only admins can list users\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Only admins can list users\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"list"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/list' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "Get user info | not authenthicated",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403: Forbidden\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"pm.test(\"Not authenticated\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Not authenticated\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/me",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"me"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/list' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "Get user info | authenthicated",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let responseJson = pm.response.json();\r",
+									"let user_id = responseJson.id;\r",
+									"pm.collectionVariables.set(\"user_id\", user_id);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/me",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"me"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/list' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "Get specific user info | not authenthicated",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403: Forbidden\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"pm.test(\"Not authenticated\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Not authenticated\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/user/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/list' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "Get specific user info | non admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403: Forbiddeb\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"pm.test(\"Only admins can list users\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Only admins can view other users\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/user/11",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"11"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/list' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "Promote user to admin | authenthicated",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"User promoted\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"User promoted\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/user/{{user_id}}/promote",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"{{user_id}}",
+								"promote"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/list' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "Promote user to admin | not authenthicated",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403: Forbidden\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"pm.test(\"Not authenticated\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Not authenticated\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/user/{{user_id}}/promote",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"{{user_id}}",
+								"promote"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/list' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "Promote user to admin | invalid id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"User not found\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"User not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/user/100000000000000000/promote",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"100000000000000000",
+								"promote"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/list' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "Promote user to admin | letters id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"pm.test(\"Input should be a valid integer, unable to parse string as an integer\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should be a valid integer, unable to parse string as an integer\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/user/asdc/promote",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"asdc",
+								"promote"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/list' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "Set user credit | authenthicated",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let creditAmount = Math.floor(Math.random() * 100);\r",
+									"\r",
+									"pm.collectionVariables.set(\"creditAmount\", creditAmount);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"User credit set\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"User credit set\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/user/{{user_id}}/credit?credit={{creditAmount}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"{{user_id}}",
+								"credit"
+							],
+							"query": [
+								{
+									"key": "credit",
+									"value": "{{creditAmount}}"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/list' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "Set user credit | not authenthicated",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403: Forbidden\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"pm.test(\"Not authenticated\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Not authenticated\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/user/{{user_id}}/credit?credit=10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"{{user_id}}",
+								"credit"
+							],
+							"query": [
+								{
+									"key": "credit",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/list' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "Get specific user info | check if credits were set",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let responseJson = pm.response.json();\r",
+									"let credits = pm.collectionVariables.get(\"creditAmount\");\r",
+									"\r",
+									"pm.test(\"Credits compliance check \", function () {;\r",
+									"    pm.expect(responseJson.credit).to.eql(credits);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/user/{{user_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"{{user_id}}"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/list' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit user | authenthicated",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseJson = pm.response.json();\r",
+									"let requestBody = pm.request.body.raw;\r",
+									"let parsedRequestBody = JSON.parse(requestBody);\r",
+									"\r",
+									"let username = parsedRequestBody.username;\r",
+									"let password = parsedRequestBody.password;\r",
+									"\r",
+									"pm.collectionVariables.set('username', username);\r",
+									"pm.collectionVariables.set('password', password);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"User edited\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"User edited\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"password\": \"{{$randomPassword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/{{user_id}}/edit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"{{user_id}}",
+								"edit"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/list' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "Get specific user info | check if creds were changed",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"let userName = pm.collectionVariables.get(\"username\");\r",
+									"\r",
+									"pm.test(\"Changed username corresponds to actual\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.username).to.eql(userName);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/user/{{user_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"{{user_id}}"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/list' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit user | not authenthicated",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"pm.test(\"Not authenticated\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Not authenticated\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/user/{{user_id}}/edit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"{{user_id}}",
+								"edit"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/list' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit user | only username",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"pm.test(\"Field required\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Field required\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"changedUsername1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/{{user_id}}/edit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"{{user_id}}",
+								"edit"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/list' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit user | only password",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"pm.test(\"Field required\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Field required\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"changedPassword1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/{{user_id}}/edit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"{{user_id}}",
+								"edit"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/list' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit user | empty body",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"pm.test(\"Field required\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Field required\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/{{user_id}}/edit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"{{user_id}}",
+								"edit"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/list' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "Login as admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseJson = pm.response.json();\r",
+									"let token = responseJson.token;\r",
+									"\r",
+									"pm.collectionVariables.set(\"token\", token);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Token is present in response\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(responseJson.token).to.eql(token);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"admin\",\r\n  \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'POST' \\\r\n  'http://shopen.qamania.org/api/v1/users/login' \\\r\n  -H 'accept: application/json' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"username\": \"string\",\r\n  \"password\": \"string\"\r\n}'"
+					},
+					"response": []
+				},
+				{
+					"name": "Get specific user info | admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"list"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/list' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "List all users in system | admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response && pm.response.code == 200) {\r",
+									"\r",
+									"    let responseJson = pm.response.json();\r",
+									"\r",
+									"    let filteredUsers = responseJson.users.filter(user => user.id <= 10);\r",
+									"\r",
+									"    console.log(filteredUsers);\r",
+									"\r",
+									"    pm.response.json({users:filteredUsers});\r",
+									"} else {\r",
+									"    console.log(\"The request did not return a valid response or an error occurred\")\r",
+									"}\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"list"
+							]
+						},
+						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/list' \\\r\n  -H 'accept: application/json'"
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Logout",
 			"item": [
 				{
@@ -3314,6 +4468,14 @@
 			"key": "url",
 			"value": "http://shopen.qamania.org/api/v1/users",
 			"type": "string"
+		},
+		{
+			"key": "user_id",
+			"value": ""
+		},
+		{
+			"key": "creditAmount",
+			"value": ""
 		}
 	]
 }
