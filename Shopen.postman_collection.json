@@ -1246,8 +1246,7 @@
 									"});\r",
 									"pm.test(\"Token is present in response\", function () {\r",
 									"    pm.expect(responseJson.token).to.eql(token);\r",
-									"});\r",
-									""
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -4414,6 +4413,1490 @@
 							]
 						},
 						"description": "Generated from cURL: curl -X 'GET' \\\r\n  'http://shopen.qamania.org/api/v1/users/logout' \\\r\n  -H 'accept: application/json' \\\r\n  -H 'Authorization: 5cf3e3f0-0156-4211-a2f3-d1c9aabd6b02'"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shop",
+			"item": [
+				{
+					"name": "Shop | List all pens",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Pens array present\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.pens).to.be.an('array').that.is.not.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Pens are listed\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"pens\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List 'Pilot' pens",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Every pen brand is 'Pilot'\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var pens = jsonData.pens;\r",
+									"\r",
+									"    pens.forEach(function(pen) {\r",
+									"        pm.expect(pen.brand).to.eql(\"Pilot\");\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?brand=Pilot",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "Pilot"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List 'parker' pens",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Every pen brand is 'parker'\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var pens = jsonData.pens;\r",
+									"\r",
+									"    pens.forEach(function(pen) {\r",
+									"        pm.expect(pen.brand).to.eql(\"parker\");\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?brand=parker",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "parker"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with minPrice -1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Pens price is above -1\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var pens = jsonData.pens;\r",
+									"\r",
+									"    pens.forEach(function(pen) {\r",
+									"        pm.expect(pen.price).to.be.above(-1);\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?minPrice=-1",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "minPrice",
+									"value": "-1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with minPrice float",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Pens price is above -1.4\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var pens = jsonData.pens;\r",
+									"\r",
+									"    pens.forEach(function(pen) {\r",
+									"        pm.expect(pen.price).to.be.above(-1.4);\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?minPrice=-1.4",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "minPrice",
+									"value": "-1.4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with minPrice null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"pm.test(\"Input should be a valid number, unable to parse string as a number\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should be a valid number, unable to parse string as a number\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?minPrice=null",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "minPrice",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with minPrice string",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"pm.test(\"Input should be a valid number, unable to parse string as a number\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should be a valid number, unable to parse string as a number\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?minPrice=as",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "minPrice",
+									"value": "as"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with maxPrice 10",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Pens price is below 11\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var pens = jsonData.pens;\r",
+									"\r",
+									"    pens.forEach(function(pen) {\r",
+									"        pm.expect(pen.price).to.be.below(11);\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?maxPrice=10",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "maxPrice",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with maxPrice float",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Pens price is below 10.3\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var pens = jsonData.pens;\r",
+									"\r",
+									"    pens.forEach(function(pen) {\r",
+									"        pm.expect(pen.price).to.be.below(10.3);\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?maxPrice=10.3",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "maxPrice",
+									"value": "10.3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with maxPrice null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"pm.test(\"Input should be a valid number, unable to parse string as a number\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should be a valid number, unable to parse string as a number\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?maxPrice=null",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "maxPrice",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with maxPrice 0",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Pens array present\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.pens).to.be.an('array').that.is.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?maxPrice=0",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "maxPrice",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with maxPrice string",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"pm.test(\"Input should be a valid number, unable to parse string as a number\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should be a valid number, unable to parse string as a number\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?maxPrice=as",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "maxPrice",
+									"value": "as"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with minStock 100",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Pens array present\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.pens).to.be.an('array').that.is.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?minStock=100",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "minStock",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with minStock float",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"pm.test(\"Input should be a valid integer, unable to parse string as an integer\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should be a valid integer, unable to parse string as an integer\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?minStock=1.4",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "minStock",
+									"value": "1.4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with minStock null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"pm.test(\"Input should be a valid integer, unable to parse string as an integer\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should be a valid integer, unable to parse string as an integer\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?minStock=null",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "minStock",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with minStock 99",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Pens price is below 100\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var pens = jsonData.pens;\r",
+									"\r",
+									"    pens.forEach(function(pen) {\r",
+									"        pm.expect(pen.price).to.be.below(100);\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?maxPrice=99",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "maxPrice",
+									"value": "99"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with minStock string",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"pm.test(\"Input should be a valid number, unable to parse string as a number\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should be a valid number, unable to parse string as a number\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?maxPrice=as",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "maxPrice",
+									"value": "as"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with color 'red'",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Every pen color is 'red\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var pens = jsonData.pens;\r",
+									"\r",
+									"    pens.forEach(function(pen) {\r",
+									"        pm.expect(pen.brand).to.eql(\"red\");\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?color=red",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "color",
+									"value": "red"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with color 'red' & 'blue'",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Every pen color is 'red\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var pens = jsonData.pens;\r",
+									"\r",
+									"    pens.forEach(function(pen) {\r",
+									"        pm.expect([\"red\", \"blue\"]).to.include(pen.color);\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?color=red,blue",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "color",
+									"value": "red,blue"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with color integer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"pm.test(\"Input should be a string, unable to parse integer as a string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should be a valid integer, unable to parse string as an integer\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?color=1",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "color",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with minLength -1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Pens length is above -1\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var pens = jsonData.pens;\r",
+									"\r",
+									"    pens.forEach(function(pen) {\r",
+									"        pm.expect(pen.length).to.be.above(-1);\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?minLength=-1",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "minLength",
+									"value": "-1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with minLength float",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"pm.test(\"Input should be a valid integer, unable to parse string as an integer\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should be a valid integer, unable to parse string as an integer\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?minLength=-1.5",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "minLength",
+									"value": "-1.5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with minLength null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"pm.test(\"Input should be a valid integer, unable to parse string as an integer\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should be a valid integer, unable to parse string as an integer\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?minLength=null",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "minLength",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with minLength 15",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Pens length is above 14\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var pens = jsonData.pens;\r",
+									"\r",
+									"    pens.forEach(function(pen) {\r",
+									"        pm.expect(pen.length).to.be.above(14);\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?minLength=15",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "minLength",
+									"value": "15"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with minLength string",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"pm.test(\"Input should be a valid integer, unable to parse string as an integer\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should be a valid integer, unable to parse string as an integer\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?minLength=as",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "minLength",
+									"value": "as"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with maxLength 13",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Pens length is below 14\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var pens = jsonData.pens;\r",
+									"\r",
+									"    pens.forEach(function(pen) {\r",
+									"        pm.expect(pen.length).to.be.below(14);\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?maxLength=13",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "maxLength",
+									"value": "13"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with maxLength float",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"pm.test(\"Input should be a valid integer, unable to parse string as an integer\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should be a valid integer, unable to parse string as an integer\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?maxLength=13.4",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "maxLength",
+									"value": "13.4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with maxLength null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"pm.test(\"Input should be a valid integer, unable to parse string as an integer\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Input should be a valid integer, unable to parse string as an integer\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?maxLength=null",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "maxLength",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with maxLength 0",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Pens length is above 0\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var pens = jsonData.pens;\r",
+									"\r",
+									"    pens.forEach(function(pen) {\r",
+									"        pm.expect(pen.length).to.be.above(0);\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?maxLength=0",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "maxLength",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shop | List pens with every parameters",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"All pens meet the specified conditions\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var pens = jsonData.pens;\r",
+									"    pens.forEach(function(pen) {\r",
+									"\r",
+									"        pm.expect(pen.brand).to.eql(\"parker\");\r",
+									"\r",
+									"\r",
+									"        pm.expect(pen.price).to.be.above(10);\r",
+									"        pm.expect(pen.price).to.be.below(100);\r",
+									"\r",
+									"\r",
+									"        pm.expect(pen.stock).to.be.at.least(90);\r",
+									"\r",
+									"\r",
+									"        pm.expect(pen.color).to.eql(\"red\");\r",
+									"\r",
+									"0\r",
+									"        pm.expect(pen.length).to.be.above(10);\r",
+									"        pm.expect(pen.length).to.be.below(100);\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://shopen.qamania.org/api/v1/pens?brand=parker&minPrice=10&maxPrice=100&minStock=90&color=red&minLength=10&maxLength=100",
+							"protocol": "http",
+							"host": [
+								"shopen",
+								"qamania",
+								"org"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pens"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "parker"
+								},
+								{
+									"key": "minPrice",
+									"value": "10"
+								},
+								{
+									"key": "maxPrice",
+									"value": "100"
+								},
+								{
+									"key": "minStock",
+									"value": "90"
+								},
+								{
+									"key": "color",
+									"value": "red"
+								},
+								{
+									"key": "minLength",
+									"value": "10"
+								},
+								{
+									"key": "maxLength",
+									"value": "100"
+								}
+							]
+						}
 					},
 					"response": []
 				}
